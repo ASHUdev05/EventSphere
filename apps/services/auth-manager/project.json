@@ -1,0 +1,22 @@
+{
+  "name": "auth-manager",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "targets": {
+    "serve": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "dotnet watch run",
+        "cwd": "apps/services/auth-manager",
+        "readyWhen": "Application started"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "dotnet build",
+        "cwd": "apps/services/auth-manager"
+      }
+    }
+  }
+}
