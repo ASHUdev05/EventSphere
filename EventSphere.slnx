@@ -1,5 +1,5 @@
 <Solution>
   <Folder Name="/services/">
-    <Project Path="apps/services/auth-manager/AuthManager.csproj" />
+    <Project Path="apps/services/notification-manager/NotificationManager.csproj" />
   </Folder>
 </Solution>

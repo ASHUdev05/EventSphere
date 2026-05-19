@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "nx run-many -t serve --all --parallel=3 --output-style=stream"
+    "start": "nx run-many -t serve --all --exclude=service-registry --parallel=4 --output-style=stream"
   },
   "private": true,
   "dependencies": {
@@ -38,6 +38,7 @@
     "@nx/playwright": "22.7.2",
     "@nx/web": "22.7.2",
     "@nx/workspace": "22.7.2",
+    "@nxrocks/nx-spring-boot": "^11.0.1",
     "@playwright/test": "^1.36.0",
     "@schematics/angular": "~21.2.0",
     "@swc-node/register": "~1.11.1",
