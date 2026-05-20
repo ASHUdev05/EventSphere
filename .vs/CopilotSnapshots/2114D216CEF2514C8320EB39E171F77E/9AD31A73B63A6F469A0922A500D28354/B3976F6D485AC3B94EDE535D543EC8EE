@@ -1,0 +1,60 @@
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.EntityFrameworkCore;
+using NotificationManager.Auth.Client;
+using NotificationManager.Auth.Handlers;
+using NotificationManager.Data;
+using NotificationManager.Filters;
+using NotificationManager.Repositories;
+using NotificationManager.Repositories.Impl;
+using NotificationManager.Services;
+using NotificationManager.Services.Impl;
+using Refit;
+using Steeltoe.Discovery.Eureka;
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddRefitClient<IIamClient>()
+    .ConfigureHttpClient(c => c.BaseAddress = new Uri("http://auth-manager"));
+
+builder.Services.AddAuthentication("InternalGatewayScheme")
+    .AddScheme<AuthenticationSchemeOptions, InternalAuthHandler>("InternalGatewayScheme", null);
+
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseNpgsql(connectionString));
+
+builder.Services.AddEurekaDiscoveryClient();
+
+builder.Services.AddScoped<INotificationRepository, NotificationRepository>();
+builder.Services.AddScoped<INotificationService, NotificationService>();
+
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+builder.Services.AddProblemDetails();
+
+builder.Services.AddControllers();
+
+// Swagger / OpenAPI (Swashbuckle)
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+var app = builder.Build();
+
+app.UseExceptionHandler();
+
+// Serve OpenAPI JSON at /api-docs (allow anonymous access before auth middleware)
+app.UseSwagger(c => { c.RouteTemplate = "api-docs"; });
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/api-docs", "NotificationManager API v1");
+    c.RoutePrefix = "swagger";
+});
+
+app.UseAuthentication();
+app.UseAuthorization();
+// Compatibility: redirect legacy /api-docs paths to the v3 path
+// Keep compatibility: redirect /v3/api-docs -> /api-docs
+app.MapGet("/v3/api-docs", () => Results.Redirect("/api-docs"));
+app.MapGet("/v3/api-docs/", () => Results.Redirect("/api-docs"));
+app.MapControllers();
+
+app.Run();

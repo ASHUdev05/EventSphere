@@ -33,44 +33,37 @@ builder.Services.AddProblemDetails();
 
 builder.Services.AddControllers();
 
-// Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
+// Swagger / OpenAPI (Swashbuckle)
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
 app.UseExceptionHandler();
+
+// Internally rewrite /v3/api-docs to the named document endpoint so JSON appears at /v3/api-docs
+app.Use(async (context, next) =>
+{
+    if (context.Request.Path.Equals("/v3/api-docs", System.StringComparison.OrdinalIgnoreCase))
+    {
+        context.Request.Path = "/v3/api-docs/v1";
+    }
+    await next();
+});
+
+// Serve OpenAPI JSON at /v3/api-docs/{documentName}
+app.UseSwagger(c => { c.RouteTemplate = "v3/api-docs/{documentName}"; });
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/v3/api-docs", "NotificationManager API v1");
+    c.RoutePrefix = "swagger";
+});
+
 app.UseAuthentication();
 app.UseAuthorization();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.MapOpenApi();
-}
-
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast");
+// Compatibility: redirect legacy /api-docs paths to the v3 path
+// Keep compatibility: redirect /v3/api-docs -> /api-docs
+// No redirects: OpenAPI JSON is available at /v3/api-docs
+app.MapControllers();
 
 app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
