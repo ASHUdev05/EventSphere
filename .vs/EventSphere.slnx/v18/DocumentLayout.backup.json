@@ -1,0 +1,122 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\Development\\EventSphere\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BD523230-2ECE-F6E9-1214-C70CF50A2FEF}|apps\\services\\notification-manager\\NotificationManager.csproj|e:\\development\\eventsphere\\apps\\services\\notification-manager\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD523230-2ECE-F6E9-1214-C70CF50A2FEF}|apps\\services\\notification-manager\\NotificationManager.csproj|solutionrelative:apps\\services\\notification-manager\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD523230-2ECE-F6E9-1214-C70CF50A2FEF}|apps\\services\\notification-manager\\NotificationManager.csproj|e:\\development\\eventsphere\\apps\\services\\notification-manager\\controllers\\notificationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD523230-2ECE-F6E9-1214-C70CF50A2FEF}|apps\\services\\notification-manager\\NotificationManager.csproj|solutionrelative:apps\\services\\notification-manager\\controllers\\notificationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD523230-2ECE-F6E9-1214-C70CF50A2FEF}|apps\\services\\notification-manager\\NotificationManager.csproj|e:\\development\\eventsphere\\apps\\services\\notification-manager\\services\\impl\\notificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD523230-2ECE-F6E9-1214-C70CF50A2FEF}|apps\\services\\notification-manager\\NotificationManager.csproj|solutionrelative:apps\\services\\notification-manager\\services\\impl\\notificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD523230-2ECE-F6E9-1214-C70CF50A2FEF}|apps\\services\\notification-manager\\NotificationManager.csproj|e:\\development\\eventsphere\\apps\\services\\notification-manager\\auth\\handlers\\internalauthhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD523230-2ECE-F6E9-1214-C70CF50A2FEF}|apps\\services\\notification-manager\\NotificationManager.csproj|solutionrelative:apps\\services\\notification-manager\\auth\\handlers\\internalauthhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD523230-2ECE-F6E9-1214-C70CF50A2FEF}|apps\\services\\notification-manager\\NotificationManager.csproj|e:\\development\\eventsphere\\apps\\services\\notification-manager\\auth\\client\\iiamclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD523230-2ECE-F6E9-1214-C70CF50A2FEF}|apps\\services\\notification-manager\\NotificationManager.csproj|solutionrelative:apps\\services\\notification-manager\\auth\\client\\iiamclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD523230-2ECE-F6E9-1214-C70CF50A2FEF}|apps\\services\\notification-manager\\NotificationManager.csproj|e:\\development\\eventsphere\\apps\\services\\notification-manager\\auth\\dto\\validateresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD523230-2ECE-F6E9-1214-C70CF50A2FEF}|apps\\services\\notification-manager\\NotificationManager.csproj|solutionrelative:apps\\services\\notification-manager\\auth\\dto\\validateresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "NotificationService.cs",
+              "DocumentMoniker": "E:\\Development\\EventSphere\\apps\\services\\notification-manager\\Services\\Impl\\NotificationService.cs",
+              "RelativeDocumentMoniker": "apps\\services\\notification-manager\\Services\\Impl\\NotificationService.cs",
+              "ToolTip": "E:\\Development\\EventSphere\\apps\\services\\notification-manager\\Services\\Impl\\NotificationService.cs",
+              "RelativeToolTip": "apps\\services\\notification-manager\\Services\\Impl\\NotificationService.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAvwCcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-20T10:26:09.118Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "NotificationController.cs",
+              "DocumentMoniker": "E:\\Development\\EventSphere\\apps\\services\\notification-manager\\Controllers\\NotificationController.cs",
+              "RelativeDocumentMoniker": "apps\\services\\notification-manager\\Controllers\\NotificationController.cs",
+              "ToolTip": "E:\\Development\\EventSphere\\apps\\services\\notification-manager\\Controllers\\NotificationController.cs",
+              "RelativeToolTip": "apps\\services\\notification-manager\\Controllers\\NotificationController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD0AAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-20T10:05:15.001Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\Development\\EventSphere\\apps\\services\\notification-manager\\Program.cs",
+              "RelativeDocumentMoniker": "apps\\services\\notification-manager\\Program.cs",
+              "ToolTip": "E:\\Development\\EventSphere\\apps\\services\\notification-manager\\Program.cs",
+              "RelativeToolTip": "apps\\services\\notification-manager\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-20T10:02:59.363Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "InternalAuthHandler.cs",
+              "DocumentMoniker": "E:\\Development\\EventSphere\\apps\\services\\notification-manager\\Auth\\Handlers\\InternalAuthHandler.cs",
+              "RelativeDocumentMoniker": "apps\\services\\notification-manager\\Auth\\Handlers\\InternalAuthHandler.cs",
+              "ToolTip": "E:\\Development\\EventSphere\\apps\\services\\notification-manager\\Auth\\Handlers\\InternalAuthHandler.cs",
+              "RelativeToolTip": "apps\\services\\notification-manager\\Auth\\Handlers\\InternalAuthHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-20T10:02:28.201Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IIAMClient.cs",
+              "DocumentMoniker": "E:\\Development\\EventSphere\\apps\\services\\notification-manager\\Auth\\Client\\IIAMClient.cs",
+              "RelativeDocumentMoniker": "apps\\services\\notification-manager\\Auth\\Client\\IIAMClient.cs",
+              "ToolTip": "E:\\Development\\EventSphere\\apps\\services\\notification-manager\\Auth\\Client\\IIAMClient.cs",
+              "RelativeToolTip": "apps\\services\\notification-manager\\Auth\\Client\\IIAMClient.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-20T09:58:58.696Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ValidateResponse.cs",
+              "DocumentMoniker": "E:\\Development\\EventSphere\\apps\\services\\notification-manager\\Auth\\Dto\\ValidateResponse.cs",
+              "RelativeDocumentMoniker": "apps\\services\\notification-manager\\Auth\\Dto\\ValidateResponse.cs",
+              "ToolTip": "E:\\Development\\EventSphere\\apps\\services\\notification-manager\\Auth\\Dto\\ValidateResponse.cs",
+              "RelativeToolTip": "apps\\services\\notification-manager\\Auth\\Dto\\ValidateResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-20T09:58:27.763Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+﻿using NotificationManager.Enums;
+using NotificationManager.Models;
+using NotificationManager.Repositories;
+
+namespace NotificationManager.Services.Impl;
+
+public class NotificationService : INotificationService
+{
+  private readonly INotificationRepository _notificationRepository;
+  private readonly ILogger<NotificationService> _logger;
+
+  public NotificationService(INotificationRepository notificationRepository, ILogger<NotificationService> logger)
+  {
+    _notificationRepository = notificationRepository;
+    _logger = logger;
+  }
+
+  public async Task<IEnumerable<Notification>> GetNotificationsScrollAsync(string userId, DateTime? lastTimestamp, int limit)
+  {
+    // Fallback to current time if anchor timestamp arrives null (matches Java baseline)
+    var anchor = lastTimestamp ?? DateTime.UtcNow;
+    _logger.LogDebug("Fetching scroll notifications for user: {UserId} using anchor timestamp: {Anchor}", userId, anchor);
+
+    var results = await _notificationRepository.GetTop20ByUserIdAndCreatedAtLessThanOrderByCreatedAtDescAsync(userId, anchor);
+
+    _logger.LogInformation("Found {Count} notifications for user: {UserId} starting from {Anchor}", results.Count(), userId, anchor);
+    return results;
+  }
+
+  public async Task SendNotificationAsync(string userId, string message, string category)
+  {
+    _logger.LogInformation("Processing notification for user: {UserId} and category: {Category}", userId, category);
+
+    // Safely evaluate your custom incoming category string to its structured Enum variant
+    if (!Enum.TryParse<NotificationCategory>(category, true, out var parsedCategory))
+    {
+      _logger.LogWarning("Failed to parse incoming category '{Category}'. Defaulting to Event.", category);
+      parsedCategory = NotificationCategory.Event;
+    }
+
+    var notification = new Notification
+    {
+      UserId = userId,
+      Message = message,
+      Category = parsedCategory,
+      Status = NotificationStatus.UNREAD
+    };
+
+    await _notificationRepository.AddAsync(notification);
+    _logger.LogDebug("Notification saved to DB with ID: {NotificationId}", notification.NotificationId);
+  }
+
+  public async Task MarkAsReadAsync(string notificationId)
+  {
+    _logger.LogInformation("Attempting to mark notification {NotificationId} as read", notificationId);
+
+    var notification = await _notificationRepository.GetByIdAsync(notificationId);
+
+    if (notification is not null)
+    {
+      notification.Status = NotificationStatus.READ;
+      await _notificationRepository.UpdateAsync(notification);
+      _logger.LogInformation("Notification {NotificationId} status updated to Read", notificationId);
+    }
+    else
+    {
+      _logger.LogWarning("Notification {NotificationId} not found, unable to mark as read", notificationId);
+    }
+  }
+}

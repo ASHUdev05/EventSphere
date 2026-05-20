@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Data",
+    "\\Repositories",
+    "\\Repositories\\Impl"
   ],
-  "SelectedNode": "\\NotificationManager.csproj",
+  "SelectedNode": "\\appsettings.json",
   "PreviewInSolutionExplorer": false
 }

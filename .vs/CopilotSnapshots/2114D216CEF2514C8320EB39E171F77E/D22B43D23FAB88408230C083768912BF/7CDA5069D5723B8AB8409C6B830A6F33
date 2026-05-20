@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Authentication;
+﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
 using NotificationManager.Auth.Client;
 using NotificationManager.Auth.Handlers;
@@ -9,12 +9,15 @@ using NotificationManager.Repositories.Impl;
 using NotificationManager.Services;
 using NotificationManager.Services.Impl;
 using Refit;
+using Steeltoe.Common.Http;
+using Steeltoe.Common.Http.Discovery;
 using Steeltoe.Discovery.Eureka;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddRefitClient<IIamClient>()
-    .ConfigureHttpClient(c => c.BaseAddress = new Uri("http://auth-manager"));
+    .ConfigureHttpClient(c => c.BaseAddress = new Uri("http://auth-manager"))
+    .AddServiceDiscovery();
 
 builder.Services.AddAuthentication("InternalGatewayScheme")
     .AddScheme<AuthenticationSchemeOptions, InternalAuthHandler>("InternalGatewayScheme", null);
