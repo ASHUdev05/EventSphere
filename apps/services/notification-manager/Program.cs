@@ -10,11 +10,13 @@ using NotificationManager.Services;
 using NotificationManager.Services.Impl;
 using Refit;
 using Steeltoe.Discovery.Eureka;
+using Steeltoe.Discovery.HttpClients;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddRefitClient<IIamClient>()
-    .ConfigureHttpClient(c => c.BaseAddress = new Uri("http://auth-manager"));
+    .ConfigureHttpClient(c => c.BaseAddress = new Uri("http://auth-manager"))
+    .AddServiceDiscovery();
 
 builder.Services.AddAuthentication("InternalGatewayScheme")
     .AddScheme<AuthenticationSchemeOptions, InternalAuthHandler>("InternalGatewayScheme", null);
@@ -61,9 +63,7 @@ app.UseSwaggerUI(c =>
 
 app.UseAuthentication();
 app.UseAuthorization();
-// Compatibility: redirect legacy /api-docs paths to the v3 path
-// Keep compatibility: redirect /v3/api-docs -> /api-docs
-// No redirects: OpenAPI JSON is available at /v3/api-docs
+
 app.MapControllers();
 
 app.Run();

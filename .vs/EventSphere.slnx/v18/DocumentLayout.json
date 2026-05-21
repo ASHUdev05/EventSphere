@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "E:\\Development\\EventSphere\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{BD523230-2ECE-F6E9-1214-C70CF50A2FEF}|apps\\services\\notification-manager\\NotificationManager.csproj|e:\\development\\eventsphere\\apps\\services\\notification-manager\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD523230-2ECE-F6E9-1214-C70CF50A2FEF}|apps\\services\\notification-manager\\NotificationManager.csproj|solutionrelative:apps\\services\\notification-manager\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{BD523230-2ECE-F6E9-1214-C70CF50A2FEF}|apps\\services\\notification-manager\\NotificationManager.csproj|e:\\development\\eventsphere\\apps\\services\\notification-manager\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{BD523230-2ECE-F6E9-1214-C70CF50A2FEF}|apps\\services\\notification-manager\\NotificationManager.csproj|solutionrelative:apps\\services\\notification-manager\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
@@ -13,10 +17,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{BD523230-2ECE-F6E9-1214-C70CF50A2FEF}|apps\\services\\notification-manager\\NotificationManager.csproj|e:\\development\\eventsphere\\apps\\services\\notification-manager\\notificationmanager.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{BD523230-2ECE-F6E9-1214-C70CF50A2FEF}|apps\\services\\notification-manager\\NotificationManager.csproj|solutionrelative:apps\\services\\notification-manager\\notificationmanager.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BD523230-2ECE-F6E9-1214-C70CF50A2FEF}|apps\\services\\notification-manager\\NotificationManager.csproj|e:\\development\\eventsphere\\apps\\services\\notification-manager\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BD523230-2ECE-F6E9-1214-C70CF50A2FEF}|apps\\services\\notification-manager\\NotificationManager.csproj|solutionrelative:apps\\services\\notification-manager\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,11 +26,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "NotificationController.cs",
               "DocumentMoniker": "E:\\Development\\EventSphere\\apps\\services\\notification-manager\\Controllers\\NotificationController.cs",
               "RelativeDocumentMoniker": "apps\\services\\notification-manager\\Controllers\\NotificationController.cs",
@@ -38,44 +38,42 @@
               "RelativeToolTip": "apps\\services\\notification-manager\\Controllers\\NotificationController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-20T15:15:37.797Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-20T15:15:37.797Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "NotificationManager",
+              "DocumentIndex": 3,
+              "Title": "NotificationManager.csproj",
               "DocumentMoniker": "E:\\Development\\EventSphere\\apps\\services\\notification-manager\\NotificationManager.csproj",
               "RelativeDocumentMoniker": "apps\\services\\notification-manager\\NotificationManager.csproj",
               "ToolTip": "E:\\Development\\EventSphere\\apps\\services\\notification-manager\\NotificationManager.csproj",
               "RelativeToolTip": "apps\\services\\notification-manager\\NotificationManager.csproj",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAkwBUAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAIwBwAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-05-20T14:04:32.956Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-20T14:04:32.956Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "appsettings.json",
               "DocumentMoniker": "E:\\Development\\EventSphere\\apps\\services\\notification-manager\\appsettings.json",
               "RelativeDocumentMoniker": "apps\\services\\notification-manager\\appsettings.json",
               "ToolTip": "E:\\Development\\EventSphere\\apps\\services\\notification-manager\\appsettings.json",
               "RelativeToolTip": "apps\\services\\notification-manager\\appsettings.json",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2026-05-20T13:53:32.686Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "E:\\Development\\EventSphere\\apps\\services\\notification-manager\\Program.cs",
               "RelativeDocumentMoniker": "apps\\services\\notification-manager\\Program.cs",
               "ToolTip": "E:\\Development\\EventSphere\\apps\\services\\notification-manager\\Program.cs",
               "RelativeToolTip": "apps\\services\\notification-manager\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADIAAAARAAAAAAAAAA==",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAEEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-20T13:45:37.386Z",
               "EditorCaption": ""
