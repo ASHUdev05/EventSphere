@@ -1,11 +1,11 @@
 package com.nyad.authmanager.exception;
 
-import com.cts.eventsphere.iamservice.dto.audit.AuditAction;
-import com.cts.eventsphere.iamservice.exception.general.GenericErrorResponse;
-import com.cts.eventsphere.iamservice.exception.user.*;
-import com.cts.eventsphere.iamservice.model.User;
-import com.cts.eventsphere.iamservice.security.UserPrincipal;
-import com.cts.eventsphere.iamservice.service.AuditService;
+import com.nyad.authmanager.dto.audit.AuditAction;
+import com.nyad.authmanager.exception.general.GenericErrorResponse;
+import com.nyad.authmanager.exception.user.*;
+import com.nyad.authmanager.model.User;
+import com.nyad.authmanager.security.UserPrincipal;
+import com.nyad.authmanager.service.AuditService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -34,13 +34,13 @@ public class GlobalExceptionHandler {
 
   @ExceptionHandler(EmailAlreadyExistsException.class)
   public ResponseEntity<GenericErrorResponse> emailAlreadyExistsException(EmailAlreadyExistsException e, HttpServletRequest request) {
-    auditService.logAudit(resolveUserId(),AuditAction.REGISTRATON_FAILURE,User.class,request.getRequestURI());
+    auditService.logAudit(resolveUserId(), AuditAction.REGISTRATON_FAILURE,User.class,request.getRequestURI());
     return new ResponseEntity<>(new GenericErrorResponse("Email already exists"), HttpStatus.CONFLICT);
   }
 
   @ExceptionHandler(InvalidPasswordException.class)
   public ResponseEntity<GenericErrorResponse> invalidPasswordException(InvalidPasswordException e,HttpServletRequest request){
-    auditService.logAudit(resolveUserId(),AuditAction.LOGIN_FAILURE,User.class,request.getRequestURI());
+    auditService.logAudit(resolveUserId(),AuditAction.LOGIN_FAILURE, User.class,request.getRequestURI());
     return new ResponseEntity<>(new GenericErrorResponse("Invalid password"), HttpStatus.BAD_REQUEST);
   }
 
