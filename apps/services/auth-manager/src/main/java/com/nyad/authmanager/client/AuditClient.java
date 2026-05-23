@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(name = "log-manager",contextId = "auditClient",path = "/audits")
+@FeignClient(name = "audit-manager",contextId = "auditClient",path = "/audits")
 public interface AuditClient {
 
   @PostMapping
