@@ -1,0 +1,15 @@
+{
+  "name": "event-manager",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/services/event-manager",
+  "targets": {
+    "serve": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "go run cmd/api/main.go",
+        "cwd": "apps/services/event-manager"
+      }
+    }
+  }
+}

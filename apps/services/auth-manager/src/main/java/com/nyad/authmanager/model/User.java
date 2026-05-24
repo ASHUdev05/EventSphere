@@ -24,7 +24,7 @@ public class User {
   private UserRole Role = UserRole.ATTENDEE;
 
   @Column(nullable = false, length = 100)
-  private String Email;
+  private String email;
 
   @Column(nullable = false, length = 255)
   private String Password;

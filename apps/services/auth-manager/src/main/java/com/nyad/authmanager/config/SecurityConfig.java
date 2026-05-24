@@ -22,28 +22,13 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig {
   private final JwtFilter jwtFilter;
 
-  /**
-   * Provides a BCrypt password encoder bean used for hashing and verifying user passwords.
-   *
-   * @return a {@link BCryptPasswordEncoder} instance
-   */
   @Bean
-  public PasswordEncoder passwordEncoder(){
+  public PasswordEncoder passwordEncoder() {
     return new BCryptPasswordEncoder();
   }
 
-  /**
-   * Configures and builds the {@link SecurityFilterChain} for the application.
-   *
-   * <p>Disables stateful session management and registers the {@link JwtFilter}
-   * before the standard username/password filter. Public paths ({@code /api/v1/auth/**})
-   * are allowed without authentication; all other paths require a valid JWT.</p>
-   *
-   * @param http the {@link HttpSecurity} builder provided by Spring Security
-   * @return the fully configured {@link SecurityFilterChain}
-   */
   @Bean
-  public SecurityFilterChain securityFilterChain(HttpSecurity http) {
+  public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     return http
       .csrf(AbstractHttpConfigurer::disable)
       .httpBasic(AbstractHttpConfigurer::disable)

@@ -6,7 +6,7 @@
     "serve": {
       "executor": "nx:run-commands",
       "options": {
-        "command": ".\\mvnw.cmd spring-boot:run",
+        "command": "./mvnw spring-boot:run",
         "cwd": "apps/services/api-gateway"
       }
     },
