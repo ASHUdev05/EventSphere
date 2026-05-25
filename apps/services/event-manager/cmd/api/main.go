@@ -1,68 +1,49 @@
 package main
 
 import (
-  "log"
-  "net/http"
-  "os"
-  "strconv"
-  "time"
+	"log"
+	"os"
+	"strconv"
 
-  "github.com/gin-gonic/gin"
-  "github.com/hudl/fargo"
-  "github.com/joho/godotenv"
+	"eventsphere/event-manager/internal/client"
+	"eventsphere/event-manager/internal/middleware"
+	"eventsphere/event-manager/internal/repository"
+	"eventsphere/event-manager/internal/service"
+	"github.com/gin-gonic/gin"
+	"github.com/hudl/fargo"
+	"github.com/joho/godotenv"
+	"gorm.io/driver/postgres"
+	"gorm.io/gorm"
 )
 
 func main() {
-  err := godotenv.Load()
-  if err != nil {
-    log.Println("No .env file found, relying on system environment variables")
-  }
+	_ = godotenv.Load()
+	portStr := os.Getenv("SERVER_PORT")
+	port, _ := strconv.Atoi(portStr)
 
-  portStr := os.Getenv("SERVER_PORT")
-  if portStr == "" {
-    portStr = "8080"
-  }
+	// DB Setup
+	db, err := gorm.Open(postgres.Open(os.Getenv("DATABASE_URL")), &gorm.Config{})
+	if err != nil {
+		log.Fatalf("failed to connect database: %v", err)
+	}
 
-  // Convert string port to integer for fargo instance
-  port, err := strconv.Atoi(portStr)
-  if err != nil {
-    log.Fatalf("Invalid SERVER_PORT: %v", err)
-  }
+	// Initialize Infrastructure
+	eurekaConn := fargo.NewConn(os.Getenv("EUREKA_URL"))
+	
+	// Wire Layers (Repo -> Service -> Controller)
+	eventRepo := repository.NewEventRepository(db)
+	auditSvc := &service.AuditService{Client: &client.AuditClient{Conn: eurekaConn}}
+	notifySvc := &service.NotificationService{Client: &client.LogClient{Conn: eurekaConn}}
+	
+	eventSvc := &service.EventService{Repo: eventRepo, Audit: auditSvc, Notify: notifySvc}
+	eventCtrl := &controller.EventController{Service: eventSvc}
 
-  eurekaURL := os.Getenv("EUREKA_URL")
+	// Router Setup
+	r := gin.Default()
+	r.Use(middleware.GlobalErrorHandler())
+	
+	r.POST("/events", eventCtrl.Create)
+	r.GET("/events/:id", eventCtrl.GetEvent)
 
-  instance := &fargo.Instance{
-    InstanceId:     "fedora:event-manager:" + portStr,
-    HostName:       "fedora",
-    Port:           port,
-    App:            "EVENT-MANAGER",
-    IPAddr:         "127.0.0.1",
-    Status:         fargo.UP,
-    DataCenterInfo: fargo.DataCenterInfo{Name: fargo.MyOwn},
-  }
-
-  eurekaConn := fargo.NewConn(eurekaURL)
-
-  err = eurekaConn.RegisterInstance(instance)
-  if err != nil {
-    log.Fatalf("Eureka registration failed: %v", err)
-  }
-
-  go func() {
-    ticker := time.NewTicker(30 * time.Second)
-    for range ticker.C {
-      err := eurekaConn.HeartBeatInstance(instance)
-      if err != nil {
-        log.Printf("Heartbeat failed: %v", err)
-      }
-    }
-  }()
-
-  r := gin.Default()
-
-  r.GET("/health", func(c *gin.Context) {
-    c.JSON(http.StatusOK, gin.H{"status": "UP"})
-  })
-
-  r.Run(":" + portStr)
+	r.Run(":" + portStr)
 }
