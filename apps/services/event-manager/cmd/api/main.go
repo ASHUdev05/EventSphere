@@ -1,5 +1,6 @@
 package main
 
+// need to fix errors...
 import (
 	"log"
 	"os"
