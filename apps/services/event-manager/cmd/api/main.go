@@ -1,6 +1,5 @@
 package main
 
-// need to fix errors...
 import (
 	"log"
 	"os"
@@ -39,7 +38,7 @@ func main() {
 
 	// 2. Initialize Shared Services
 	auditSvc := &service.AuditService{Client: &client.AuditClient{Conn: eurekaConn}}
-	notifySvc := &service.NotificationService{Client: &client.LogServiceClient{Conn: eurekaConn}}
+	notifySvc := &service.NotificationService{Client: &client.LogClient{Conn: eurekaConn}}
 
 	// 3. Initialize Domain Services
 	eventSvc := &service.EventService{Repo: eventRepo, Audit: auditSvc, Notify: notifySvc}
