@@ -7,6 +7,7 @@ import (
 	"eventsphere/event-manager/internal/model"
 	"eventsphere/event-manager/internal/model/data"
 	"eventsphere/event-manager/internal/repository"
+
 	"github.com/shopspring/decimal"
 )
 
@@ -15,7 +16,7 @@ type TicketService struct {
 	Event *repository.EventRepository
 }
 
-func (s *TicketService) CreateTicket(actorID, eventID, tType string, price float64, status data.TicketStatus) (dto.TicketResponseDto, error) {
+func (s *TicketService) CreateTicket(actorID, eventID, tType string, price float64, status string) (dto.TicketResponseDto, error) {
 	_, err := s.Event.FindByEventID(eventID)
 	if err != nil {
 		return dto.TicketResponseDto{}, &exception.EventNotFoundException{ID: eventID}
@@ -30,7 +31,7 @@ func (s *TicketService) CreateTicket(actorID, eventID, tType string, price float
 		EventID: eventID,
 		Type:    tType,
 		Price:   decimal.NewFromFloat(price),
-		Status:  status,
+		Status:  data.TicketStatus(status),
 	}
 
 	s.Repo.DB.Create(&ticket)

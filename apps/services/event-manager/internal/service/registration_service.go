@@ -50,3 +50,26 @@ func (s *RegistrationService) ApproveRegistration(actorID, regID string) error {
 	s.Notify.SendNotification(reg.AttendeeID, "Registration confirmed", "EVENT")
 	return nil
 }
+func (s *RegistrationService) CheckInRegistration(actorID, regID string) error {
+	var reg model.Registration
+	if err := s.Repo.DB.First(&reg, "registration_id = ?", regID).Error; err != nil {
+		return &exception.RegistrationNotFoundException{Msg: "Registration not found"}
+	}
+
+	reg.Status = data.RegCheckedIn
+	s.Repo.DB.Save(&reg)
+	s.Notify.SendNotification(reg.AttendeeID, "Registration checked in", "EVENT")
+	return nil
+}
+
+func (s *RegistrationService) RejectRegistration(actorID, regID string) error {
+	var reg model.Registration
+	if err := s.Repo.DB.First(&reg, "registration_id = ?", regID).Error; err != nil {
+		return &exception.RegistrationNotFoundException{Msg: "Registration not found"}
+	}
+
+	reg.Status = data.RegCancelled
+	s.Repo.DB.Save(&reg)
+	s.Notify.SendNotification(reg.AttendeeID, "Registration rejected", "EVENT")
+	return nil
+}
